@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Class for testing the console
 """
@@ -8,6 +9,7 @@ import inspect
 import pep8
 import unittest
 HBNBCmd = console.HBNBCommand
+
 
 class TestingHbnb(unittest.TestCase):
     """testing documentation of the console"""
