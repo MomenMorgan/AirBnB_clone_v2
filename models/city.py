@@ -13,6 +13,7 @@ class City(BaseModel, Base):
             String(60),
             ForeignKey('states.id'),
             nullable=False
+<<<<<<< HEAD
             ) if getenv('HBNB_TYPE_STORAGE') == 'db' else ''
     name = Column(
             String(128), nullable=False
@@ -21,3 +22,13 @@ class City(BaseModel, Base):
             'Place', cascade='all, delete',
             backref='cities'
             ) if getenv('HBNB_TYPE_STORAGE') == 'db' else None
+=======
+            )
+    name = Column(
+            String(128), nullable=False
+            )
+    places = relationship(
+            'Place', cascade='all, delete',
+            backref='cities'
+            )
+>>>>>>> dfbacf1a61228a0c40040d2513235dba2443b817
