@@ -32,8 +32,8 @@ def python(text="is cool"):
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
-     n = str(n)
-     return "{} is a number".format(n)
+    n = str(n)
+    return "{} is a number".format(n)
 
 
 if __name__ == '__main__':
