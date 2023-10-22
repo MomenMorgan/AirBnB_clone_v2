@@ -44,7 +44,6 @@ def number_template(n):
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def eve_odd(n):
-    n = str(n)
     return render_template("6-number_odd_or_even.py", n=n)
 
 
