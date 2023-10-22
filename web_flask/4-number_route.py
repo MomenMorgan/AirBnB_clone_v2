@@ -33,6 +33,7 @@ def python(text="is cool"):
 @app.route('/number/<n>', strict_slashes=False)
 def number(n):
     if int(n):
+        n = str(n)
         return "{} is a number".format(n)
 
 
