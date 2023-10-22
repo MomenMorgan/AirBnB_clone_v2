@@ -22,4 +22,3 @@ class City(BaseModel, Base):
             'Place', cascade='all, delete',
             backref='cities'
             )
-

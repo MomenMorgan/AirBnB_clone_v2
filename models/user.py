@@ -26,4 +26,3 @@ class User(BaseModel, Base):
         'Review',
         cascade="all, delete",
         backref='user')
-

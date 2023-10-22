@@ -23,6 +23,3 @@ class State(BaseModel, Base):
                 if value.state_id == State.id:
                     cities_list.append(value)
             return cities_list
-
-
-
