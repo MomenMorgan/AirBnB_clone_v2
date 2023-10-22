@@ -23,11 +23,11 @@ def c_fun(text):
     return "C {}".format(text)
 
 
-# @app.route('/python/')
+@app.route('/python/')
 @app.route('/python/<text>', strict_slashes=False)
 def python(text="is cool"):
     text = text.replace("_", " ")
-    return "python {}".format(text)
+    return "Python {}".format(text)
 
 
 if __name__ == '__main__':
