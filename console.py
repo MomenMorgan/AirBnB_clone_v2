@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
         try:  # parse line left to right
             pline = line[:]  # parsed line
 
-            # isolate <class name>
+            # isolate the  <class name>
             _cls = pline[:pline.find('.')]
 
             # isolate and validate <command>
@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ Create an object of any class"""
+        """ Create an object of any class to be added"""
         line = args.split(" ")
         if not args:
             print("** class name missing **")

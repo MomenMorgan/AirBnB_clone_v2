@@ -11,16 +11,10 @@ from models import storage
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
-<<<<<<< HEAD
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
-        name = Column(String(128), nullable=False)
-        cities = relationship("City", cascade="all, delete", backref='state')
-    else:
-=======
+
     name = Column(String(128), nullable=False)
     cities = relationship("City", cascade="all, delete", backref='state')
     if getenv('HBNB_TYPE_STORAGE') != 'db':
->>>>>>> dfbacf1a61228a0c40040d2513235dba2443b817
         @property
         def cities():
             """anything"""
@@ -29,3 +23,6 @@ class State(BaseModel, Base):
                 if value.state_id == State.id:
                     cities_list.append(value)
             return cities_list
+
+
+

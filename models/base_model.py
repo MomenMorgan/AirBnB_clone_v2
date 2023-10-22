@@ -20,22 +20,6 @@ class BaseModel:
     __table_args__ = (UniqueConstraint('id'),)
 
     def __init__(self, *args, **kwargs):
-<<<<<<< HEAD
-        """Instatntiates a new model"""
-        if not kwargs:
-            from models import storage
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-        else:
-            for key, value in kwargs.items():
-                if key == '__class__':
-                    continue
-                if key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(value,
-                            "%Y-%m-%dT%H:%M:%S.%f"))
-                else:
-=======
         """Instantiates a new model"""
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
@@ -45,7 +29,6 @@ class BaseModel:
                 if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
->>>>>>> dfbacf1a61228a0c40040d2513235dba2443b817
                     setattr(self, key, value)
 
     def __str__(self):
@@ -68,12 +51,9 @@ class BaseModel:
                 dictionary[key] = value
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
-<<<<<<< HEAD
-        dictionary['__class__'] = type(self).__name__
 
-=======
         dictionary.pop("_sa_instance_state", None)
->>>>>>> dfbacf1a61228a0c40040d2513235dba2443b817
+
         return dictionary
 
     def delete(self):
