@@ -1,33 +1,23 @@
 #!/usr/bin/python3
-""" this module contains a script that starts a Flask web application
-    the web application must be listening on 0.0.0.0, port 5000"""
-from models import *
-from models.base_model import BaseModel, Base
-from models.user import User
-from models.place import Place
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
+"""script to fetch states list from storage"""
 from flask import Flask, render_template
+from models import storage
+from models.state import State
+
+
 app = Flask(__name__)
-classes = {"Amenity": Amenity, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
+
+
+@app.teardown_appcontext
+def teardown(exc):
+    """close the session after each request"""
+    storage.close()
 
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    """ display HTML page with list of states """
-    states = storage.all(classes["State"]).values()
-    # ^ fetches States data from storage engine, then in line below,
-    # those states are passed into the template
-    return render_template('7-states_list.html', states=states)
-
-
-@app.teardown_appcontext
-def remove_SQLalc_session(exception):
-    """ close storage when tear down is executed """
-    storage.close()
+    """get state list from storage"""
+    return render_template("7-states_list.html", states=storage.all(State))
 
 
 if __name__ == '__main__':

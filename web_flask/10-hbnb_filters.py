@@ -4,20 +4,23 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.amenity import Amenity
 
 app = Flask(__name__)
 
 
-@app.route('/cities_by_states', strict_slashes=False)
+@app.route('/hbnb_filters', strict_slashes=False)
 def cities_by_states():
     """display a HTML page: (inside the tag BODY)"""
-    # sort states by name from a to z
     slist = sorted(storage.all(
         State).values(), key=lambda x: x.name)
-    # sort cities by name from a to z
     for s in slist:
         s.cities.sort(key=lambda x: x.name)
-    return render_template("8-cities_by_states.html", sorted_states_list=slist)
+
+    amenity = sorted(storage.all(
+        Amenity).values(), key=lambda x: x.name)
+    print(amenity)
+    return render_template("10-hbnb_filters.html", states=slist, amenity=amenity)
 
 
 @app.teardown_appcontext
